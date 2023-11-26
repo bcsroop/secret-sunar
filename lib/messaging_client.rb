@@ -4,7 +4,7 @@ require 'yaml'
 
 class MessagingClient
 
-	attr_reader(:from_number)
+	attr_reader(:from_number, :client)
 	
 	def initialize
 		secrets = YAML.load_file('config/secrets.yml')
