@@ -24,16 +24,15 @@ describe 'Participant' do
 		let(:sroop) { Participant.new("Sroop", 222, "JJ") }
 		let(:jj) { Participant.new("JJ", 222, "Sroop") }
 		let(:dad) { Participant.new("Dad", 222, "Mum") }
-		let(:hat) { [mum, sroop, jj, dad] }
 
 		it 'returns a list of valid options from the hat' do
-			expect(mum.valid_options(hat)).to eq([sroop, jj])
+			expect(mum.valid_options([mum, dad, sroop, jj])).to eq([sroop, jj])
 		end
 
 		it 'picks a giftee from the list of options' do
-			mum.pick_from(hat)
+			mum.pick_from([mum, sroop, dad])
 
-			expect([sroop, jj].include?(mum.giftee)).to be(true)
+			expect(mum.giftee).to eq(sroop)
 		end
 
 		it 'raises an error if there are no names to pick' do
@@ -41,8 +40,12 @@ describe 'Participant' do
 		end
 
 		it 'generates a notification message when a giftee is picked' do
-			mum.pick_from(hat)
-			expect(mum.notification).to match(/Thanks for playing \*Secret Sunar\*! You are gifting (Sroop|JJ) a christmas present. Remember to keep it a secret./)
+			mum.pick_from([mum, dad, jj])
+			expect(mum.notification).to match("Thanks for playing *Secret Sunar*! You are gifting JJ a christmas present. Remember to keep it a secret.")
+		end
+
+		it 'generates a different notification message when there is no giftee' do
+			expect(mum.notification).to eq("Reach out to Sroop - something went wrong!")
 		end
 
 	end

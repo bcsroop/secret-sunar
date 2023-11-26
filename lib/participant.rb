@@ -22,7 +22,7 @@ class Participant
 	end
 
 	def notification
-		return unless giftee
+		return "Reach out to Sroop - something went wrong!" unless giftee
 		"Thanks for playing *Secret Sunar*! You are gifting #{giftee.name} a christmas present. Remember to keep it a secret."
 	end
 
