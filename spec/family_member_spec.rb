@@ -12,8 +12,18 @@ describe 'FamilyMember' do
 		expect(family_member.phone).to eq(1234)
 	end
 
-	it 'had a list of exclusions' do
+	it 'has a list of exclusions' do
 		expect(family_member.exclusions).to eq(['Dad'])
+	end
+
+	it 'has a giftee that is initially empty' do
+		expect(family_member.giftee).to eq(nil)
+	end
+
+	it 'can be assigned a giftee' do
+		sroop = FamilyMember.new("Sroop", 222, ["Jean-Jacques"])
+		family_member.giftee=sroop
+		expect(family_member.giftee).to eq(sroop)
 	end
 
 end
