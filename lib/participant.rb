@@ -2,10 +2,10 @@ class Participant
 
 	attr_reader(:name, :phone, :giftee, :exclusions)
 
-	def initialize(name, phone, partner_name)
+	def initialize(name, phone, exclusion)
 		@name = name
 		@phone = phone
-		@exclusions = [partner_name, name]
+		@exclusions = [exclusion, name]
 		@giftee = nil
 	end
 
