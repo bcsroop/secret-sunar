@@ -1,9 +1,9 @@
 class FamilyMember
 	attr_reader(:name, :phone, :giftee, :exclusions)
-	def initialize(name, phone, partner)
+	def initialize(name, phone, partner_name)
 		@name = name
 		@phone = phone
-		@exclusions = [partner, name]
+		@exclusions = [partner_name, name]
 		@giftee = nil
 	end
 
