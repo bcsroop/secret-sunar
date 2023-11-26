@@ -15,6 +15,11 @@ describe 'SecretSunar' do
 		expect(secret_sunar.messaging_client).to eq(nil)
 	end
 
+	it 'does not notify family members without a messaging client' do 
+		secret_sunar = SecretSunar.new([mum, sroop])
+		expect(secret_sunar.notify_family!).to eq(nil)
+	end
+
 	it 'has a messaging client on init' do 
 		messaging_client = double(:messaging_client)
 		secret_sunar = SecretSunar.new([mum, sroop], messaging_client)

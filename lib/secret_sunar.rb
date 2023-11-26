@@ -15,6 +15,7 @@ class SecretSunar
 	end
 
 	def notify_family!
+		return unless messaging_client
 		family.map do |member|
 			messaging_client.send!(member.notification, member.phone)
 		end
