@@ -42,7 +42,7 @@ describe 'Participant' do
 
 		it 'generates a notification message when a giftee is picked' do
 			mum.pick_from(hat)
-			expect(mum.notification).to match(/Thanks for playing 'Secret Sunar'! You are gifting (Sroop|JJ) a christmas present. Remember to keep it a secret./)
+			expect(mum.notification).to match(/Thanks for playing \*Secret Sunar\*! You are gifting (Sroop|JJ) a christmas present. Remember to keep it a secret./)
 		end
 
 	end
