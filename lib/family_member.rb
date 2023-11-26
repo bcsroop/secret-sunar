@@ -1,8 +1,8 @@
 class FamilyMember
-	attr_reader(:name, :phone, :illegal_targets)
-	def initialize(name, phone, illegal_targets)
+	attr_reader(:name, :phone, :exclusions)
+	def initialize(name, phone, exclusions)
 		@name = name
 		@phone = phone
-		@illegal_targets = illegal_targets
+		@exclusions = exclusions
 	end
 end

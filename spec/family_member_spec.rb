@@ -12,8 +12,8 @@ describe 'FamilyMember' do
 		expect(family_member.phone).to eq(1234)
 	end
 
-	it 'had a list of illegal targets' do
-		expect(family_member.illegal_targets).to eq(['Dad'])
+	it 'had a list of exclusions' do
+		expect(family_member.exclusions).to eq(['Dad'])
 	end
 
 end
