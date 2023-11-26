@@ -1,13 +1,10 @@
 class SecretSunar
 
-	attr_reader(:family)
+	attr_reader(:family, :messaging_client)
 
-	def initialize(family)
+	def initialize(family, messaging_client=nil)
 		@family = family
-	end
-
-	def new_messaging_client
-		# MessagingClient.new
+		@messaging_client = messaging_client
 	end
 
 	def draw_names
@@ -18,7 +15,6 @@ class SecretSunar
 	end
 
 	def notify_family!
-		messaging_client = new_messaging_client
 		family.map do |member|
 			messaging_client.send!(member.notification, member.phone)
 		end
