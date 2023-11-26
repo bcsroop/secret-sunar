@@ -41,7 +41,7 @@ describe 'Participant' do
 
 		it 'generates a notification message when a giftee is picked' do
 			mum.pick_from([mum, dad, jj])
-			expect(mum.notification).to match("Thanks for playing *Secret Sunar*! You are gifting JJ a christmas present. Remember to keep it a secret.")
+			expect(mum.notification).to match("Thanks for playing *Secret Sunar*! You are gifting JJ a christmas present. Remember to keep it a secret, and the budget is £100.")
 		end
 
 		it 'generates a different notification message when there is no giftee' do

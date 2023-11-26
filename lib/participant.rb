@@ -23,7 +23,7 @@ class Participant
 
 	def notification
 		return "Reach out to Sroop - something went wrong!" unless giftee
-		"Thanks for playing *Secret Sunar*! You are gifting #{giftee.name} a christmas present. Remember to keep it a secret."
+		"Thanks for playing *Secret Sunar*! You are gifting #{giftee.name} a christmas present. Remember to keep it a secret, and the budget is £100."
 	end
 
 	class DrawingError < StandardError;end
