@@ -56,5 +56,8 @@ secret_sunar.draw_names
 secret_sunar.notify_participants!
 ```
 
+### Twilio setup
+
+Login to Twilio, create a new project, then create `config/secrets.yml` containing a `account_sid`, `auth_token` and `twilio_number`. For each participant in Secret Sunar, you will need to verify their phone number first as this only works with a free trial. Add each phone number into the "Verified Caller IDs" section of Twilio's UI, and then ask each participant to send you the verification code that Twilio sends to them in a text message. Once each phone number is verified, you can run the program!
 
 
