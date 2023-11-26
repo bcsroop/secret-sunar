@@ -4,8 +4,14 @@ class FamilyMember
 	def initialize(name, phone, exclusions)
 		@name = name
 		@phone = phone
-		@exclusions = exclusions
+		@exclusions = exclusions.append(name)
 		@giftee = nil
+	end
+
+	def giftee_options(family)
+		family.reject do |member|
+			exclusions.include?(member.name)
+		end
 	end
 
 end
