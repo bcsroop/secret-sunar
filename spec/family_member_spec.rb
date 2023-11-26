@@ -20,12 +20,6 @@ describe 'FamilyMember' do
 		expect(family_member.giftee).to eq(nil)
 	end
 
-	it 'can be assigned a giftee' do
-		sroop = FamilyMember.new("Sroop", 222, ["Jean-Jacques"])
-		family_member.giftee=sroop
-		expect(family_member.giftee).to eq(sroop)
-	end
-
 	it 'returns a list of giftee options' do
 		sroop = FamilyMember.new("Sroop", 222, ["Jean-Jacques"])
 		jj = FamilyMember.new("Jean-Jacques", 222, ["Sroop"])
@@ -33,6 +27,17 @@ describe 'FamilyMember' do
 		family = [family_member, sroop, jj, dad]
 
 		expect(family_member.giftee_options(family)).to eq([sroop, jj])
+	end
+
+	it 'picks a giftee from the list of options' do
+		sroop = FamilyMember.new("Sroop", 222, ["Jean-Jacques"])
+		jj = FamilyMember.new("Jean-Jacques", 222, ["Sroop"])
+		dad = FamilyMember.new("Dad", 222, ["Mum"])
+		family = [family_member, sroop, jj, dad]
+
+		family_member.pick_from(family)
+
+		expect([sroop, jj].include?(family_member.giftee)).to be(true)
 	end
 
 end
