@@ -1,9 +1,10 @@
 require 'secret_sunar'
+require 'fake_messaging_client'
 
 describe 'SecretSunar' do
 
-	let(:mum) { double(:family_member, name: "Mum", phone: 111, exclusions: ["Dad"], notification: "Notification") }
-	let(:sroop) { double(:family_member, name: "Sroop", phone: 222, exclusions: ["Jean-Jacques"], notification: "Notification") }
+	let(:mum) { double(:family_member, name: "Mum", phone: "111", exclusions: ["Dad"], notification: "Buy a gift for Sroop") }
+	let(:sroop) { double(:family_member, name: "Sroop", phone: "222", exclusions: ["Jean-Jacques"], notification: "Buy a gift for mum") }
 
 	it 'has participants' do
 		secret_sunar = SecretSunar.new([mum, sroop])
@@ -27,9 +28,12 @@ describe 'SecretSunar' do
 	end
 
 	it 'sends a text message to each participant, notifying them of their giftee' do
-		messaging_client = double(:messaging_client, send!: "Sent!")
+		messaging_client = FakeMessagingClient.new
 		secret_sunar = SecretSunar.new([mum, sroop], messaging_client)
-		expect(secret_sunar.notify_participants!).to eq(["Sent!", "Sent!"])
+		expect(secret_sunar.notify_participants!).to eq([
+			"[111]: Buy a gift for Sroop",
+			"[222]: Buy a gift for mum"
+		])
 	end
 
 	# it 'draws names for each family member' do
