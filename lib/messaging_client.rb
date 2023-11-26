@@ -5,6 +5,7 @@ require 'yaml'
 class MessagingClient
 
 	attr_reader(:from_number)
+	
 	def initialize
 		secrets = YAML.load_file('config/secrets.yml')
 		@client = Twilio::REST::Client.new(
