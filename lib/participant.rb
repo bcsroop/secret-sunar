@@ -1,4 +1,4 @@
-class FamilyMember
+class Participant
 	attr_reader(:name, :phone, :giftee, :exclusions)
 	def initialize(name, phone, partner_name)
 		@name = name

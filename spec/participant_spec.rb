@@ -1,8 +1,8 @@
-require 'family_member'
+require 'participant'
 
-describe 'FamilyMember' do
+describe 'Participant' do
 	
-	let(:mum) { FamilyMember.new("Mum", 1234, "Dad") }
+	let(:mum) { Participant.new("Mum", 1234, "Dad") }
 
 	it 'has a name' do
 		expect(mum.name).to eq("Mum")
@@ -21,9 +21,9 @@ describe 'FamilyMember' do
 	end
 
 	describe 'Picking a giftee from a hat' do
-		let(:sroop) { FamilyMember.new("Sroop", 222, "JJ") }
-		let(:jj) { FamilyMember.new("JJ", 222, "Sroop") }
-		let(:dad) { FamilyMember.new("Dad", 222, "Mum") }
+		let(:sroop) { Participant.new("Sroop", 222, "JJ") }
+		let(:jj) { Participant.new("JJ", 222, "Sroop") }
+		let(:dad) { Participant.new("Dad", 222, "Mum") }
 		let(:hat) { [mum, sroop, jj, dad] }
 
 		it 'returns a list of valid options from the hat' do
