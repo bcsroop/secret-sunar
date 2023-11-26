@@ -1,22 +1,22 @@
 class SecretSunar
 
-	attr_reader(:family, :messaging_client)
+	attr_reader(:participants, :messaging_client)
 
-	def initialize(family, messaging_client=nil)
-		@family = family
+	def initialize(participants, messaging_client=nil)
+		@participants = participants
 		@messaging_client = messaging_client
 	end
 
 	def draw_names
-		family.reduce(family) do |hat, member|
+		participants.reduce(participants) do |hat, member|
 			chosen = member.pick_from(hat)
 			hat.reject{|fam| fam.name == chosen.name}
 		end
 	end
 
-	def notify_family!
+	def notify_participants!
 		return unless messaging_client
-		family.map do |member|
+		participants.map do |member|
 			messaging_client.send!(member.notification, member.phone)
 		end
 	end
