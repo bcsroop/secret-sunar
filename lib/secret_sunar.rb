@@ -13,8 +13,9 @@ class SecretSunar
 				chosen = participant.pick_from(hat)
 				hat.reject{|fam| fam.name == chosen.name}
 			end
+			"All done!"
 		rescue Participant::DrawingError
-			puts "Something went wrong with the draw, trying again.."
+			puts "Please wait..."
 			draw_names
 		end
 	end
