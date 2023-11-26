@@ -21,7 +21,7 @@ class FamilyMember
 
 	def notification
 		return unless giftee
-		"Secret Sunar: You are gifting #{giftee.name} a christmas present! Remember to keep it a secret."
+		"Thanks for playing 'Secret Sunar'! You are gifting #{giftee.name} a christmas present. Remember to keep it a secret."
 	end
 
 end
