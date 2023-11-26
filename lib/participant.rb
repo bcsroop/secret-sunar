@@ -14,8 +14,8 @@ class Participant
 	end
 
 	def valid_options(hat)
-		hat.reject do |member|
-			exclusions.include?(member.name)
+		hat.reject do |participant|
+			exclusions.include?(participant.name)
 		end
 	end
 

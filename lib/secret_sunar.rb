@@ -8,16 +8,16 @@ class SecretSunar
 	end
 
 	def draw_names
-		participants.reduce(participants) do |hat, member|
-			chosen = member.pick_from(hat)
+		participants.reduce(participants) do |hat, participant|
+			chosen = participant.pick_from(hat)
 			hat.reject{|fam| fam.name == chosen.name}
 		end
 	end
 
 	def notify_participants!
 		return unless messaging_client
-		participants.map do |member|
-			messaging_client.send!(member.notification, member.phone)
+		participants.map do |participant|
+			messaging_client.send!(participant.notification, participant.phone)
 		end
 	end
 
