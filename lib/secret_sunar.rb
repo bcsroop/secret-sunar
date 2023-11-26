@@ -8,9 +8,14 @@ class SecretSunar
 	end
 
 	def draw_names
-		participants.reduce(participants) do |hat, participant|
-			chosen = participant.pick_from(hat)
-			hat.reject{|fam| fam.name == chosen.name}
+		begin
+			participants.shuffle.reduce(participants) do |hat, participant|
+				chosen = participant.pick_from(hat)
+				hat.reject{|fam| fam.name == chosen.name}
+			end
+		rescue Participant::DrawingError
+			puts "Something went wrong with the draw, trying again.."
+			draw_names
 		end
 	end
 

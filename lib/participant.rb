@@ -1,7 +1,7 @@
 class Participant
 
 	attr_reader(:name, :phone, :giftee, :exclusions)
-	
+
 	def initialize(name, phone, partner_name)
 		@name = name
 		@phone = phone
@@ -11,7 +11,7 @@ class Participant
 
 	def pick_from(hat)
 		possible_giftees = valid_options(hat)
-		raise "something went wrong!" if possible_giftees.empty?
+		raise DrawingError.new if possible_giftees.empty?
 		@giftee = possible_giftees.shuffle.sample
 	end
 
@@ -26,4 +26,5 @@ class Participant
 		"Thanks for playing 'Secret Sunar'! You are gifting #{giftee.name} a christmas present. Remember to keep it a secret."
 	end
 
+	class DrawingError < StandardError;end
 end

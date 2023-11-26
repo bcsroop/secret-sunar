@@ -36,10 +36,15 @@ describe 'Participant' do
 			expect([sroop, jj].include?(mum.giftee)).to be(true)
 		end
 
+		it 'raises an error if there are no names to pick' do
+			expect { mum.pick_from([mum, dad]) }.to raise_error(Participant::DrawingError)
+		end
+
 		it 'generates a notification message when a giftee is picked' do
 			mum.pick_from(hat)
 			expect(mum.notification).to match(/Thanks for playing 'Secret Sunar'! You are gifting (Sroop|JJ) a christmas present. Remember to keep it a secret./)
 		end
+
 	end
 
 end
