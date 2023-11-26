@@ -4,17 +4,23 @@ class SecretSunar
 
 	def initialize(family)
 		@family = family
-		@messaging_client = messaging_client
 	end
 
-	def messaging_client
-		# TextMessage.new
+	def new_messaging_client
+		# MessagingClient.new
 	end
 
 	def draw_names
-		family.reduce(family) do |available_family_options, member|
-			giftee = member.pick_from(available_family_options)
-			available_family_options.reject{|m| m.name == giftee.name}
+		family.reduce(family) do |hat, member|
+			chosen = member.pick_from(hat)
+			hat.reject{|fam| fam.name == chosen.name}
+		end
+	end
+
+	def notify_family!
+		messaging_client = new_messaging_client
+		family.map do |member|
+			messaging_client.send!(member.notification, member.phone)
 		end
 	end
 

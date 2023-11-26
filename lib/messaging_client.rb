@@ -2,7 +2,7 @@ require 'rubygems'
 require 'twilio-ruby'
 require 'yaml'
 
-class TextMessage
+class MessagingClient
 
 	attr_reader(:from_number)
 	def initialize
@@ -14,17 +14,13 @@ class TextMessage
 		@from_number = secrets["twilio_number"]
 	end
 
-	def send_to(giftee_name, gifter_phone)
+	def send!(message, phone_number)
 		message = client.messages.create(
-			:body => message_body(giftee_name),
-			:to => gifter_phone,
+			:body => message,
+			:to => phone_number,
 			:from => from_number
 		)
-		puts message.sid
-	end
-
-	def message_body(giftee_name)
-		"You are #{giftee_name}'s Secret Sunar 🎅"
+		message.sid
 	end
 
 end

@@ -1,22 +1,27 @@
 class FamilyMember
 	attr_reader(:name, :phone, :giftee, :exclusions)
-	def initialize(name, phone, exclusions)
+	def initialize(name, phone, partner)
 		@name = name
 		@phone = phone
-		@exclusions = exclusions.append(name)
+		@exclusions = [partner, name]
 		@giftee = nil
 	end
 
-	def pick_from(family)
-		possible_giftees = giftee_options(family)
+	def pick_from(hat)
+		possible_giftees = valid_options(hat)
 		raise "something went wrong!" if possible_giftees.empty?
 		@giftee = possible_giftees.shuffle.sample
 	end
 
-	def giftee_options(family)
-		family.reject do |member|
+	def valid_options(hat)
+		hat.reject do |member|
 			exclusions.include?(member.name)
 		end
+	end
+
+	def notification
+		return unless giftee
+		"Secret Sunar: You are gifting #{giftee.name} a christmas present! Remember to keep it a secret."
 	end
 
 end
