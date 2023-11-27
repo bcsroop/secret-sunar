@@ -42,7 +42,7 @@ participants:
     exclusion: "Mum"
   - name: ...
 ```
-Each participant won't be allowed to pick themselves, and they can also name one person they want to exclude from their pick of the hat, using the `exclusions` key. This is setup in a way so that participants don't end up picking their partners (yes this program is biased towards couples - sorry!). Just make sure the names don't have typos, and that any named exclusions are spelled correctly and correspond to a participant's name!
+Each participant won't be allowed to pick themselves, and they can also name one person they want to exclude from their pick of the hat, using the `exclusion` key. This is setup in a way so that participants don't end up picking their partners, but of course you can sneakily exclude someone you don't want to buy a gift for too. Just make sure the names don't have typos, and that any named exclusions are spelled correctly and correspond to a participant's name!
 
 Create your participants, a messaging client and the secret sunar program:
 ```
